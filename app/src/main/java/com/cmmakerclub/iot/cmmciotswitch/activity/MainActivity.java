@@ -11,6 +11,8 @@ import android.util.SparseIntArray;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CompoundButton;
+import android.widget.Switch;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.cmmakerclub.iot.cmmciotswitch.R;
@@ -107,6 +109,9 @@ public class MainActivity extends BaseActivity {
         bitMask.put(R.id.button2, 1 << 1);
         bitMask.put(R.id.button3, 1 << 2);
         bitMask.put(R.id.button4, 1 << 3);
+
+
+
     }
 
 

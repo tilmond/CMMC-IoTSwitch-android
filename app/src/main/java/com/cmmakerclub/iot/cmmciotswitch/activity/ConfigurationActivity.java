@@ -48,13 +48,13 @@ public class ConfigurationActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         mBinding =
                 DataBindingUtil.setContentView(this, R.layout.activity_configuration);
 
         mContext = this;
         ButterKnife.bind(this);
         mConnOpts = MQTTOptions_.getInstance_(mContext).reloadConfig();
-
 
         mBinding.setConfig(new ViewModel.MqttConfig(mContext));
         setSupportActionBar(mToolBar);
@@ -134,13 +134,5 @@ public class ConfigurationActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @OnLongClick(R.id.clientid_edittext)
-    public boolean generateClientId(EditText editTextView) {
-        AppHelper.setString(editTextView.getContext(), Constants.MQTT_CLIENT_ID,
-                "CMMC-"+UUID.randomUUID().toString().split("-")[0]);
-        MQTTOptions_.getInstance_(editTextView.getContext()).reloadConfig();
-        mBinding.setConfig(new ViewModel.MqttConfig(mContext));
 
-        return true;
-    }
 }

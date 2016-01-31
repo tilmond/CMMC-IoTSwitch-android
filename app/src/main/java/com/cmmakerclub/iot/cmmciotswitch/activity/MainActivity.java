@@ -43,6 +43,7 @@ public class MainActivity extends BaseActivity {
     final private EventHandler mEventHandler
             = new EventHandler();
 
+    MQTTOptions mConnOpts;
 
     public class EventHandler {
         @Subscribe
@@ -98,9 +99,9 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         mContext = this;
         setContentView(R.layout.activity_main);
-        Intent intent = new Intent(mContext, ConfigurationActivity.class);
-        startActivity(intent);
         ButterKnife.bind(this);
+
+        mConnOpts = MQTTOptions_.getInstance_(mContext).reloadConfig();
 
         bitMask.put(R.id.button1, 1 << 0);
         bitMask.put(R.id.button2, 1 << 1);
